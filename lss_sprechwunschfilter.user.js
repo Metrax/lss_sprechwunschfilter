@@ -2,7 +2,7 @@
 // @name         lss_sprechwunschfilter
 // @namespace    https://openuserjs.org/scripts/Metrax/lss_sprechwunschfilter
 // @updateURL    https://openuserjs.org/meta/Metrax/lss_sprechwunschfilter.meta.js
-// @version      1.1
+// @version      1.11
 // @description  Adds filter to the "Sprechwunsch"-function of Leitstellespiel.de
 // @author       Robert Walter
 // @match        https://www.leitstellenspiel.de/*
