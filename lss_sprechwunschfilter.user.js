@@ -2,9 +2,9 @@
 // @name         lss_sprechwunschfilter
 // @namespace    https://openuserjs.org/scripts/Metrax/lss_sprechwunschfilter
 // @updateURL    https://openuserjs.org/meta/Metrax/lss_sprechwunschfilter.meta.js
-// @version      1.12
+// @version      1.13
 // @description  Adds filter to the "Sprechwunsch"-function of Leitstellenspiel.de
-// @author       Robert Walter
+// @author       Robert Walter & Michael Walter
 // @match        https://www.leitstellenspiel.de/*
 // @match        https://www.leitstellenspiel.de/
 // @grant        GM_getValue
@@ -12,11 +12,9 @@
 // @grant        GM_deleteValue
 // ==/UserScript==
 
-
 beds = parseInt(GM_getValue('beds',0));
-fees = parseInt(GM_getValue('fees'),50);
+fees = parseInt(GM_getValue('fees',50));
 special = GM_getValue('special','Nein');
-
 
 $(document).ready(function() {
     if (window.location.pathname.match(/vehicles\//)) {
@@ -36,22 +34,22 @@ $(document).ready(function() {
             var percent40 = "";
             var percent50 = "";
             switch (fees) {
-                case "0":
+                case 0:
                     percent0 = " selected";
                     break;
-                case "10":
+                case 10:
                     percent10 = " selected";
                     break;
-                case "20":
+                case 20:
                     percent20 = " selected";
                     break;
-                case "30":
+                case 30:
                     percent30 = " selected";
                     break;
-                case "40":
+                case 40:
                     percent40 = " selected";
                     break;
-                case "50":
+                case 50:
                     percent50 = " selected";
                     break;
                 default:
@@ -78,7 +76,7 @@ $(document).ready(function() {
         }
     }
 });
- 
+
 function swf_change() {
     beds = $("#swf_beds").is(':checked') ? 1 : 0;
     special = $("#swf_special").is(':checked') ? 'Ja' : 'Nein';
@@ -88,9 +86,8 @@ function swf_change() {
     GM_setValue("special",special);
     swf_startFilter(beds,fees,special);
 }
- 
+
 function swf_startFilter(beds,fees,special) {
-    console.log("Filter!");
     $('table:eq(0) > tbody > tr').show();
     $('table:eq(0) > tbody > tr').each(function() {
         td_beds = parseInt($(this).find('td').eq(2).text().match(/[0-9]{1,2}/)[0]);
@@ -100,6 +97,4 @@ function swf_startFilter(beds,fees,special) {
         if(beds === 1 && td_beds === 0) $(this).hide();
         if(special !== td_special && special !== "Nein") $(this).hide();
     });
-   
- 
 }
