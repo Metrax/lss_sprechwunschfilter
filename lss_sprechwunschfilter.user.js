@@ -2,7 +2,7 @@
 // @name         lss_sprechwunschfilter
 // @namespace    https://openuserjs.org/scripts/Metrax/lss_sprechwunschfilter
 // @updateURL    https://openuserjs.org/meta/Metrax/lss_sprechwunschfilter.meta.js
-// @version      1.11
+// @version      1.12
 // @description  Adds filter to the "Sprechwunsch"-function of Leitstellenspiel.de
 // @author       Robert Walter
 // @match        https://www.leitstellenspiel.de/*
@@ -57,7 +57,7 @@ $(document).ready(function() {
                 default:
                     percent50 = " selected";
             }
-            if(special === 1) {
+            if(special === "Ja") {
                 special_checked = " checked=\"checked\"";
             } else {
                 special_checked = "";
