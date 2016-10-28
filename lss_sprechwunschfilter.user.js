@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name         lss_sprechwunschfilter
-// @namespace    http://tampermonkey.net/
-// @version      1.0
+// @namespace    https://openuserjs.org/scripts/Metrax/lss_sprechwunschfilter
+// @updateURL    https://openuserjs.org/meta/Metrax/lss_sprechwunschfilter.meta.js
+// @version      1.1
 // @description  Adds filter to the "Sprechwunsch"-function of Leitstellespiel.de
 // @author       Robert Walter
 // @match        https://www.leitstellenspiel.de/*
