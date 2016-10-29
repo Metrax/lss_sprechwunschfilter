@@ -2,7 +2,7 @@
 // @name         lss_sprechwunschfilter
 // @namespace    https://openuserjs.org/scripts/Metrax/lss_sprechwunschfilter
 // @updateURL    https://openuserjs.org/meta/Metrax/lss_sprechwunschfilter.meta.js
-// @version      1.13
+// @version      1.14
 // @description  Adds filter to the "Sprechwunsch"-function of Leitstellenspiel.de
 // @author       Robert Walter & Michael Walter
 // @match        https://www.leitstellenspiel.de/*
@@ -60,20 +60,33 @@ $(document).ready(function() {
             } else {
                 special_checked = "";
             }
-            div = "Freie Betten: <input type=\"checkbox\" name=\"swf_beds\" id=\"swf_beds\"" + beds_checked + " />";
-            div += "Maximale Abgabe: <select name=\"swf_fees\" id=\"swf_fees\">";
-            div += "<option value=\"0\" " + percent0 + ">0 %</option>";
-            div += "<option value=\"10\" " + percent10 + ">10 %</option>";
-            div += "<option value=\"20\" " + percent20 + ">20 %</option>";
-            div += "<option value=\"30\" " + percent30 + ">30 %</option>";
-            div += "<option value=\"40\" " + percent40 + ">40 %</option>";
-            div += "<option value=\"50\" " + percent50 + ">50 %</option>";
-            div += "</select>";
-            div += "Fachabteilung: <input type=\"checkbox\" name=\"swf_special\" id=\"swf_special\"" + special_checked + " />";
+            div = '<div class="checkbox">';
+            div += '  <label>';
+            div += '    <input id="swf_beds" type="checkbox" value="" '+beds_checked+'>';
+            div += '    Freie Betten';
+            div += '  </label>';
+            div += '</div>';
+
+            div += '<div class="checkbox">';
+            div += '  <label>';
+            div += '    <input id="swf_special" type="checkbox" value="" '+special_checked+'>';
+            div += '    Fachabteilung';
+            div += '  </label>';
+            div += '</div>';
+
+            div += '<form class="form-inline">';
+            div += 'Maximale Abgabe: <select name="swf_fees" id="swf_fees" class=\"form-control\">';
+            div += '<option value="0" " + percent0 + ">0 %</option>';
+            div += '<option value="10" " + percent10 + ">10 %</option>';
+            div += '<option value="20" " + percent20 + ">20 %</option>';
+            div += '<option value="30" " + percent30 + ">30 %</option>';
+            div += '<option value="40" " + percent40 + ">40 %</option>';
+            div += '<option value="50" " + percent50 + ">50 %</option>';
+            div += '</select>';
+            div += '</form>';
             $('h5:contains("Verbandskrankenhäuser")').after(div);
             $('#swf_beds, #swf_fees, #swf_special').change(swf_change);
-            swf_startFilter(beds,fees,special);
-        }
+            swf_startFilter(beds,fees,special);        }
     }
 });
 
