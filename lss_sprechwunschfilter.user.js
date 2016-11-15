@@ -2,7 +2,7 @@
 // @name         lss_sprechwunschfilter
 // @namespace    https://openuserjs.org/scripts/Metrax/lss_sprechwunschfilter
 // @updateURL    https://openuserjs.org/meta/Metrax/lss_sprechwunschfilter.meta.js
-// @version      1.20
+// @version      1.21
 // @description  Adds filter to the "Sprechwunsch"-function of Leitstellenspiel.de
 // @author       Robert Walter & Michael Walter
 // @match        https://www.leitstellenspiel.de/*
@@ -185,8 +185,13 @@ function swf_jail_startFilter(cell,fees) {
 }
 
 function swf_startFilter(beds,fees,special) {
-    $('table:eq(0) > tbody > tr').show();
-    $('table:eq(0) > tbody > tr').each(function() {
+    if($('div:contains("Du hast noch kein Krankenhaus gebaut")').length === 0) {
+        index = 1;
+    } else {
+        index = 0;
+    }
+    $("table:eq(" + index + ") > tbody > tr").show();
+    $("table:eq(" + index + ") > tbody > tr").each(function() {
         td_beds = parseInt($(this).find('td').eq(2).text().match(/[0-9]{1,2}/)[0]);
         td_fees = parseInt($(this).find('td').eq(3).text().match(/([0-9]{1,2}) \%/)[1]);
         td_special = $(this).find('td').eq(4).text().match(/(Ja|Nein)/)[0];
